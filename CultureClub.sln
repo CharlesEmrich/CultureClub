@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{8ED4D569-B9FB-46FF-99C4-DCFBDDA4290F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F601F3CA-6649-42C0-9A29-8FEE4DB4754C}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "CultureClub", "src\CultureClub\CultureClub.xproj", "{BFAF2A15-0DBA-465B-86F5-9B90A5E443B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BFAF2A15-0DBA-465B-86F5-9B90A5E443B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFAF2A15-0DBA-465B-86F5-9B90A5E443B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFAF2A15-0DBA-465B-86F5-9B90A5E443B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFAF2A15-0DBA-465B-86F5-9B90A5E443B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BFAF2A15-0DBA-465B-86F5-9B90A5E443B1} = {8ED4D569-B9FB-46FF-99C4-DCFBDDA4290F}
+	EndGlobalSection
+EndGlobal
