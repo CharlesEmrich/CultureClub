@@ -1,0 +1,22 @@
+﻿@model RPG.Models.Door
+@{
+    ViewData["Title"] = "Door - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add a new Location</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Shape)
+    @Html.EditorFor(model => model.Shape)
+
+    @Html.LabelFor(model => model.Color)
+    @Html.EditorFor(model => model.Color)
+
+    @Html.LabelFor(model => model.Size)
+    @Html.EditorFor(model => model.Size)
+
+    <input type="submit" value="Create" class="btn btn-default" />
+}
+@Html.ActionLink("Back to List", "Index")

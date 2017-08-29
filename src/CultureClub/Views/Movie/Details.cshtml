@@ -1,0 +1,14 @@
+﻿
+@model TravelBlog.Models.Door
+@{
+    ViewData["Title"] = "Door - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Door Details</h2>
+<hr />
+<p>@Html.DisplayNameFor(model => model.Color): @Html.DisplayFor(model => model.Color)</p>
+<p>@Html.DisplayNameFor(model => model.Shape): @Html.DisplayFor(model => model.Shape)</p>
+<p>@Html.DisplayNameFor(model => model.Size): @Html.DisplayFor(model => model.Size)</p>
+
+<p>@Html.ActionLink("Edit", "Edit", new { id = Model.DoorId }) | @Html.ActionLink("Back to List", "Index")</p>

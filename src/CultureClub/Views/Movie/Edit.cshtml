@@ -1,0 +1,27 @@
+﻿
+@model RPG.Models.Door
+@{
+    ViewData["Title"] = "Door - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Traits of DoorId @Html.DisplayFor(model => model.DoorId)</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.DoorId)
+
+    @Html.LabelFor(model => model.Shape)
+    @Html.EditorFor(model => model.Shape)
+
+    @Html.LabelFor(model => model.Size)
+    @Html.EditorFor(model => model.Size)
+
+    @Html.LabelFor(model => model.Color)
+    @Html.EditorFor(model => model.Color)
+
+    <input type="submit" value="Save" class="btn btn-primary" />
+}
+
+@Html.ActionLink("Back to List", "Index")

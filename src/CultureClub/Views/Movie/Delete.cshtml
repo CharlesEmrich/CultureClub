@@ -1,0 +1,22 @@
+﻿@@model RPG.Models.Door
+
+@{
+    ViewData["Title"] = "Door - Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Close this door forever?</h2>
+
+@Html.DisplayNameFor(model => model.Shape) : @Html.DisplayFor(model => model.Shape)
+@Html.DisplayNameFor(model => model.Color) : @Html.DisplayFor(model => model.Color)
+@Html.DisplayNameFor(model => model.Size) : @Html.DisplayFor(model => model.Size)
+
+
+
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+<p>@Html.ActionLink("Back to home", "Index")</p>

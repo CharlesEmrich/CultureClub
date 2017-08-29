@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<RPG.Models.Door>
+
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Doors</h2>
+<hr />
+<p>
+    @Html.ActionLink("Add New Door", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Shape)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var loc in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => loc.Shape) --
+            </td>
+            <td>
+                @Html.DisplayFor(model => loc.Color) --
+            </td>
+            <td>
+                @Html.DisplayFor(model => loc.Size) --
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = loc.DoorId })
+                @Html.ActionLink("Details", "Details", new { id = loc.DoorId })
+                @Html.ActionLink("Delete", "Delete", new { id = loc.DoorId })
+            </td>
+        </tr>
+    }
+</table>

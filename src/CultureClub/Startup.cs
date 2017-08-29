@@ -7,6 +7,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore;
+using CultureClub.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace CultureClub
 {
@@ -37,6 +41,12 @@ namespace CultureClub
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+            services.AddEntityFramework()
+                .AddDbContext<RPGDbContext>(options =>
+                    options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<RPGDbContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,6 +56,7 @@ namespace CultureClub
             loggerFactory.AddDebug();
 
             app.UseApplicationInsightsRequestTelemetry();
+            app.UseIdentity();
 
             if (env.IsDevelopment())
             {
