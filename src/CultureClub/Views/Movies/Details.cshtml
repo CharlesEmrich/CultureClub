@@ -10,5 +10,7 @@
 <p>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</p>
 <p>@Html.DisplayNameFor(model => model.Director): @Html.DisplayFor(model => model.Director)</p>
 <p>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</p>
+<hr />
+@Html.Action("Create", "Create", "Ratings")
 
 <p>@Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) | @Html.ActionLink("Back to List", "Index")</p>

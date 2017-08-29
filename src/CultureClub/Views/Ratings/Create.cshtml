@@ -1,0 +1,15 @@
+﻿@model CultureClub.Models.Rating
+@using CultureClub.Models
+@{
+
+}
+<h2>Add a Rating</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.DropDownListFor(model => model.Score,
+                        new SelectList(Enum.GetValues(typeof(ScoreNumber))),
+                        "Select Star Rating")
+
+    <input type="submit" value="Rate This" class="btn btn-default" />
+}

@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CultureClub.Controllers
 {
-    public class RatingsController
+    public class RatingsController : Controller
     {
-        //private CultureClubDbContext db = new CultureClubDbContext();
+        private CultureClubDbContext db = new CultureClubDbContext();
 
         //public IActionResult Index()
         //{
