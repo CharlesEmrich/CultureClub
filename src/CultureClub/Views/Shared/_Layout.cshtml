@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RPG</title>
+    <title>@ViewData["Title"] - Cult.ure.Club</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -27,15 +27,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">RPG</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Cult.ure.Club</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @Html.ActionLink("Manage Doors", "Index", "Door")
-                    @Html.ActionLink("Manage Keys", "Index", "Key")
-                    @Html.ActionLink("Manage Players", "Index", "Player")
-                    @Html.ActionLink("Manage Rooms", "Index", "Room")
-                    Play Game?
+                    @Html.ActionLink("Manage Movies", "Index", "Movies")
                 </ul>
             </div>
         </div>
@@ -44,7 +40,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017 - RPG</p>
+            <p>&copy; 2017 - CultureClub</p>
         </footer>
     </div>
 

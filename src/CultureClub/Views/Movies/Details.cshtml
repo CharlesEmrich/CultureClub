@@ -1,0 +1,14 @@
+﻿
+@model CultureClub.Models.Movie
+@{
+    ViewData["Title"] = "Movie - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movie Details</h2>
+<hr />
+<p>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</p>
+<p>@Html.DisplayNameFor(model => model.Director): @Html.DisplayFor(model => model.Director)</p>
+<p>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</p>
+
+<p>@Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) | @Html.ActionLink("Back to List", "Index")</p>

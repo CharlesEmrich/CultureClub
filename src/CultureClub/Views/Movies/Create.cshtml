@@ -1,0 +1,21 @@
+﻿@model CultureClub.Models.Movie
+@{
+    ViewData["Title"] = "Movie - Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add a new Movie</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Title)
+    @Html.EditorFor(model => model.Title)
+
+    @Html.LabelFor(model => model.Director)
+    @Html.EditorFor(model => model.Director)
+
+    @Html.LabelFor(model => model.Year)
+    @Html.EditorFor(model => model.Year)
+    <input type="submit" value="Create" class="btn btn-default" />
+}
+@Html.ActionLink("Back to List", "Index")

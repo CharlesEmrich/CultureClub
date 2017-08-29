@@ -14,6 +14,7 @@ namespace CultureClub.Models
         public int MovieId { get; set; }
         public string Title { get; set; }
         public string Director { get; set; }
+        public int Year { get; set; }
         public virtual ICollection<Rating> Ratings { get; set; }
         //Do I want to track actors or genres here?
     }

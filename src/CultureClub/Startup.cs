@@ -37,15 +37,16 @@ namespace CultureClub
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
             services.AddMvc();
+
             services.AddEntityFramework()
-                .AddDbContext<RPGDbContext>(options =>
+                .AddDbContext<CultureClubDbContext>(options =>
                     options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
+
             services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<RPGDbContext>()
+                .AddEntityFrameworkStores<CultureClubDbContext>()
                 .AddDefaultTokenProviders();
         }
 

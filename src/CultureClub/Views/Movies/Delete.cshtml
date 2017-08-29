@@ -1,0 +1,19 @@
+﻿@model CultureClub.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie - Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Remove this movie forever?</h2>
+
+@Html.DisplayNameFor(model => model.Title) : @Html.DisplayFor(model => model.Title)
+@Html.DisplayNameFor(model => model.Director) : @Html.DisplayFor(model => model.Director)
+@Html.DisplayNameFor(model => model.Year) : @Html.DisplayFor(model => model.Year)
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" />
+}
+
+<p>@Html.ActionLink("Back to home", "Index")</p>
