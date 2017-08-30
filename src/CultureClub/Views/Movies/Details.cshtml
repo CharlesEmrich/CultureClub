@@ -11,6 +11,6 @@
 <p>@Html.DisplayNameFor(model => model.Director): @Html.DisplayFor(model => model.Director)</p>
 <p>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</p>
 <hr />
-@Html.Action("Create", "Create", "Ratings")
+@Html.Partial("~/Views/Ratings/Create.cshtml")
 
 <p>@Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) | @Html.ActionLink("Back to List", "Index")</p>

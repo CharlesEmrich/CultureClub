@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CultureClub.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace CultureClub.Controllers
 {
@@ -12,17 +13,21 @@ namespace CultureClub.Controllers
     {
         private CultureClubDbContext db = new CultureClubDbContext();
 
-        //public IActionResult Index()
-        //{
-        //    var thisWorker = db.Workers.Include(i => i.Jobs).FirstOrDefault(i => i.UserName == User.Identity.Name);
-        //    if (thisWorker != null)
-        //    {
-        //        return View(thisWorker);
-        //    }
-        //    else
-        //    {
-        //        return RedirectToAction("Create");
-        //    }
-        //}
+        public IActionResult Create(int id)
+        {
+            var thisMovie = db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+
+            return View(thisMovie);
+        }
+        [HttpPost]
+        public IActionResult Create(int MovieId, ScoreNumber Rating)
+        {
+            Debug.WriteLine("***********************\n\n***********************");
+            Debug.WriteLine(MovieId);
+            Debug.WriteLine(Rating);
+            Debug.WriteLine("***********************\n\n***********************");
+
+            return View();
+        }
     }
 }

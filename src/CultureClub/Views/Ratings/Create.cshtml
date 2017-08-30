@@ -1,4 +1,4 @@
-﻿@model CultureClub.Models.Rating
+﻿@model CultureClub.Models.Movie
 @using CultureClub.Models
 @{
 
@@ -7,7 +7,8 @@
 
 @using (Html.BeginForm())
 {
-    @Html.DropDownListFor(model => model.Score,
+    @Html.HiddenFor(model => model.MovieId)
+    @Html.DropDownList("Rating",
                         new SelectList(Enum.GetValues(typeof(ScoreNumber))),
                         "Select Star Rating")
 

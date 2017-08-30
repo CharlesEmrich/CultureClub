@@ -27,7 +27,7 @@ namespace CultureClub.Controllers
 
         public IActionResult Index()
         {
-            Debug.WriteLine("***********************\nHELLOWORLD\n***********************");
+            // Debug.WriteLine("***********************\nHELLOWORLD\n***********************");
             return View();
         }
 
