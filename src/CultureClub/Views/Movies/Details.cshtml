@@ -1,5 +1,8 @@
 ﻿
 @model CultureClub.Models.Movie
+@using CultureClub.Models
+@using System.Security.Claims
+
 @{
     ViewData["Title"] = "Movie - Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,6 +14,18 @@
 <p>@Html.DisplayNameFor(model => model.Director): @Html.DisplayFor(model => model.Director)</p>
 <p>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</p>
 <hr />
-@Html.Partial("~/Views/Ratings/Create.cshtml")
 
+@if (User.Identity.IsAuthenticated)
+{
+    <h2>Add a Rating</h2>
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.MovieId)
+        @Html.DropDownList("Rating",
+                            new SelectList(Enum.GetValues(typeof(ScoreNumber))),
+                            "Select Star Rating")
+
+        <input type="submit" value="Rate This" class="btn btn-default" />
+    }
+}
 <p>@Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) | @Html.ActionLink("Back to List", "Index")</p>

@@ -24,7 +24,7 @@ namespace CultureClub.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=RPG;integrated security=True");
+            options.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=CultureClub;integrated security=True");
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {

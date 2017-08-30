@@ -8,9 +8,10 @@ using CultureClub.Models;
 namespace CultureClub.Migrations
 {
     [DbContext(typeof(CultureClubDbContext))]
-    partial class CultureClubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170830060339_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")
@@ -86,15 +87,11 @@ namespace CultureClub.Migrations
                     b.Property<int>("RatingId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("ApplicationUserId");
-
                     b.Property<int?>("MovieId");
 
                     b.Property<int>("Score");
 
                     b.HasKey("RatingId");
-
-                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("MovieId");
 
@@ -210,10 +207,6 @@ namespace CultureClub.Migrations
 
             modelBuilder.Entity("CultureClub.Models.Rating", b =>
                 {
-                    b.HasOne("CultureClub.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
-                        .HasForeignKey("ApplicationUserId");
-
                     b.HasOne("CultureClub.Models.Movie", "Movie")
                         .WithMany("Ratings")
                         .HasForeignKey("MovieId");
