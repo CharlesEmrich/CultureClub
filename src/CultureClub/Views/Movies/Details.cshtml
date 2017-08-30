@@ -13,6 +13,7 @@
 <p>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</p>
 <p>@Html.DisplayNameFor(model => model.Director): @Html.DisplayFor(model => model.Director)</p>
 <p>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</p>
+<p>@Model.AverageRating(Model.MovieId)</p>
 <hr />
 
 @if (User.Identity.IsAuthenticated)
