@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+ @*TODO: Get the title of the movie here. Restructure the model to do it.*@
 <h2>Movies Related to THE MOVIE YOU SELECTED</h2>
 <hr />
 
@@ -32,11 +33,11 @@
             <td>
                 @Html.DisplayFor(model => movie.Year) --
             </td>
-            <td>
+            @*<td>
                 @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId })
                 @Html.ActionLink("Details", "Details", new { id = movie.MovieId })
                 @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId })
-            </td>
+            </td>*@
         </tr>
     }
 </table>

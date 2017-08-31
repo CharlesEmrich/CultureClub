@@ -68,7 +68,7 @@ namespace CultureClub.Controllers
             highRatings.ForEach(e => e.ApplicationUser
                 .Ratings.Where(rating => rating.Score > 3).ToList()
                 .ForEach(rating => relatedMovies.Add(rating.Movie)));
-
+            Debug.WriteLine(relatedMovies.ToString());
             return View(relatedMovies);
         }
 

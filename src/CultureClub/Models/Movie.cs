@@ -28,14 +28,20 @@ namespace CultureClub.Models
         {
             List<Rating> movieRatings = new CultureClubDbContext().Ratings.Where(e => e.Movie.MovieId == MovieId).ToList();
 
-            int total = 0;
-            movieRatings.ForEach(e => total += e.Score);
-            double average = (double)(total / movieRatings.Count);
-            Debug.WriteLine(total);
-            Debug.WriteLine(movieRatings.Count);
-            Debug.WriteLine(total / movieRatings.Count);
-            //TODO: Get this to display with some decimals?
-            return average;
+            if (movieRatings.Count > 0)
+            {
+                int total = 0;
+                movieRatings.ForEach(e => total += e.Score);
+                double average = ((double)total / (double)movieRatings.Count);
+                Debug.WriteLine(total);
+                Debug.WriteLine(movieRatings.Count);
+                Debug.WriteLine(total / movieRatings.Count);
+                //TODO: Get this to display with some decimals?
+                return average;
+            } else
+            {
+                return 0;
+            }
         }
     }
 

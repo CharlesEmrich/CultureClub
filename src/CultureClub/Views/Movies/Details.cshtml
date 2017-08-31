@@ -18,6 +18,7 @@
 
 @if (User.Identity.IsAuthenticated)
 {
+    //TODO: Disable this if they've rated the movie
     <h2>Add a Rating</h2>
     @using (Html.BeginForm())
     {
