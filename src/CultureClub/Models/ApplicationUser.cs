@@ -8,5 +8,6 @@ namespace CultureClub.Models
 {
     public class ApplicationUser : IdentityUser
     {
+        public virtual ICollection<Rating> Ratings { get; set; }
     }
 }

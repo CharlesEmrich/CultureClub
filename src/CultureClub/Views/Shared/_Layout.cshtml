@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using System.Security.Claims
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -32,6 +34,10 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @Html.ActionLink("Manage Movies", "Index", "Movies")
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Your Favorites", "Faves", "Movies")
+                    }
                     @Html.Partial("~/Views/Account/Index.cshtml")
                 </ul>
             </div>

@@ -40,6 +40,38 @@ namespace CultureClub.Controllers
         {
             return View();
         }
+
+
+        public IActionResult Faves()
+        {
+            ViewData["Message"] = "Your Favorite Movies.";
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+            //Movies the current user rated highly.
+            var userFaves = _db.Ratings.Include(e => e.Movie).Where(e => e.ApplicationUser.Id == userId && e.Score > 3).ToList();
+            List<Movie> faveMovies = new List<Movie> { };
+            userFaves.ForEach(e => faveMovies.Add(e.Movie));
+
+            return View(faveMovies);
+        }
+
+        public IActionResult FaveRelated(int id)
+        {
+            //Find the movie we're talking about.
+            var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
+            //Find all high ratings for that movie.
+            var highRatings = _db.Ratings.Include(e => e.ApplicationUser).Where(e => e.Movie.MovieId == thisMovie.MovieId && e.Score > 3).ToList();
+            //Find all of the high ratings issued by users who rated this movie highly.
+            //TODO: We need to exclude ratings by the current user.
+            //TODO: Exclude ratings of the current movie.
+            List<Movie> relatedMovies = new List<Movie> { };
+            highRatings.ForEach(e => e.ApplicationUser
+                .Ratings.Where(rating => rating.Score > 3).ToList()
+                .ForEach(rating => relatedMovies.Add(rating.Movie)));
+
+            return View(relatedMovies);
+        }
+
         [HttpPost]
         public IActionResult Create(Movie movie)
         {

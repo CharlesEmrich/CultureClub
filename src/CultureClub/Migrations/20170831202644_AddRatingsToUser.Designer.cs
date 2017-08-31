@@ -8,9 +8,10 @@ using CultureClub.Models;
 namespace CultureClub.Migrations
 {
     [DbContext(typeof(CultureClubDbContext))]
-    partial class CultureClubDbContextModelSnapshot : ModelSnapshot
+    [Migration("20170831202644_AddRatingsToUser")]
+    partial class AddRatingsToUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.0-rtm-21431")

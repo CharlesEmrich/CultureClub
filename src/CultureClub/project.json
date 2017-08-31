@@ -29,7 +29,9 @@
     "Microsoft.EntityFrameworkCore.Tools": {
       "version": "1.0.0-preview2-final",
       "type": "build"
-    }
+    },
+    "RestSharp.NetCore": "105.2.3",
+    "Newtonsoft.Json": "9.0.1"
   },
 
   "tools": {
