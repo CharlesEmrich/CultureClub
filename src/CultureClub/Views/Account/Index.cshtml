@@ -7,6 +7,7 @@
 @if (User.Identity.IsAuthenticated)
 {
     <p>Hello @User.Identity.Name!</p>
+
     @using (Html.BeginForm("LogOff", "Account"))
     {
         <input type="submit" class="btn btn-default" value="Log out" />
@@ -18,6 +19,6 @@
 }
 else
 {
-    <p>@Html.ActionLink("Register", "Register", "Account")</p>
-    <p>@Html.ActionLink("Log in", "Login", "Account")</p>
+    <li>@Html.ActionLink("Register", "Register", "Account")</li>
+    <li>@Html.ActionLink("Log in", "Login", "Account")</li>
 }
