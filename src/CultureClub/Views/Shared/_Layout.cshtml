@@ -21,19 +21,19 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
+                <li>@Html.ActionLink("Manage Movies", "Index", "Movies")</li>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <p>Hello @User.Identity.Name!</p>
-
-                    @using (Html.BeginForm("LogOff", "Account"))
-                    {
-                        <input type="submit" class="btn btn-default" value="Log out" />
-                    }
-                    @using (Html.BeginForm("Delete", "Account"))
-                    {
-                        <input type="submit" class="btn btn-default" value="Delete Account" />
-                    }
-                    <li>@Html.ActionLink("Your Favorites", "Faves", "Movies")</li>
+                    <li>
+                        <a href="javascript:void(0)" class="LogOff">Log Off</a>
+                        @using (Html.BeginForm("LogOff", "Account",
+                            FormMethod.Post, new { @class = "hidden" })) { }
+                    </li>
+                    <li>
+                       <a href="javascript:void(0)" class="Delete">Delete Account</a>
+                        @using (Html.BeginForm("Delete", "Account",
+                             FormMethod.Post, new { @class = "hidden" })) { }
+                    </li>
                 }
                 else
                 {
@@ -42,19 +42,19 @@
                 }            
             </ul>
             <ul id="nav-mobile" class="side-nav">
+                <li>@Html.ActionLink("Manage Movies", "Index", "Movies")</li>
                 @if (User.Identity.IsAuthenticated)
                 {
-                    <p>Hello @User.Identity.Name!</p>
-
-                    @using (Html.BeginForm("LogOff", "Account"))
-                    {
-                        <input type="submit" class="btn btn-default" value="Log out" />
-                    }
-                    @using (Html.BeginForm("Delete", "Account"))
-                    {
-                        <input type="submit" class="btn btn-default" value="Delete Account" />
-                    }
-                    <li>@Html.ActionLink("Your Favorites", "Faves", "Movies")</li>
+                    <li>
+                        <a href="javascript:void(0)" class="LogOff">Log Off</a>
+                        @using (Html.BeginForm("LogOff", "Account",
+                            FormMethod.Post, new { @class = "hidden" })) { }
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)" class="Delete">Delete Account</a>
+                        @using (Html.BeginForm("Delete", "Account",
+                            FormMethod.Post, new { @class = "hidden" })) { }
+                    </li>
                 }
                 else
                 {
@@ -62,11 +62,9 @@
                     <li>@Html.ActionLink("Log in", "Login", "Account")</li>
                 }
             </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+         <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
-
-    @Html.ActionLink("Manage Movies", "Index", "Movies")
 
     @RenderBody()
 
@@ -77,6 +75,17 @@
     <!-- Compiled and minified Materialize JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     
+    <script type="text/javascript">
+       $(document).ready(function(){
+           $('.LogOff').click(function () {
+             $(this).next()[0].submit();
+          });
+          $('.Delete').click(function () {
+              $(this).next[0].submit();
+          });
+       });
+    </script>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
