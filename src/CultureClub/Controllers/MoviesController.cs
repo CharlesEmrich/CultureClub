@@ -79,7 +79,7 @@ namespace CultureClub.Controllers
                     {
                         Debug.WriteLine("User " + rating.ApplicationUser.UserName + " rated " + foreignRating.Movie?.Title + " a " + foreignRating.Score);
                         Debug.WriteLine(foreignRating.Movie.Title + "!=" + thisMovie.Title);
-                        if (foreignRating.Movie.Title != thisMovie.Title && foreignRating.Score > 3)
+                        if (foreignRating.Movie.Title != thisMovie.Title && foreignRating.Score > 3 && !relatedMovies.Contains(foreignRating.Movie))
                         {
                             relatedMovies.Add(foreignRating.Movie);
                         }
