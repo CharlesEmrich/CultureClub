@@ -48,5 +48,18 @@ namespace CultureClub.Models
             Rating MyRating = new CultureClubDbContext().Ratings.FirstOrDefault(e => e.Movie.MovieId == MovieId && e.ApplicationUser.Id == UserId);
             return MyRating.Score;
         }
+
+        public bool IsRatedByCurrentUser (string UserId)
+        {
+            Rating MyRating = new CultureClubDbContext().Ratings.FirstOrDefault(e => e.Movie.MovieId == this.MovieId && e.ApplicationUser.Id == UserId);
+            if (MyRating == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

@@ -17,7 +17,7 @@
     <p>Average Rating: @Model.AverageRating(Model.MovieId)</p>
     <hr />
 </div>
-@if (User.Identity.IsAuthenticated)
+@if (User.Identity.IsAuthenticated && !Model.IsRatedByCurrentUser(User.FindFirst(ClaimTypes.NameIdentifier)?.Value))
 {
     //TODO: Disable this if they've rated the movie
     <div class="row">
