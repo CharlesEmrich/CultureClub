@@ -6,43 +6,47 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Movies</h2>
-<hr />
+<div class="row">
+    <h2>Movies</h2>
+    <hr />
+</div>
 
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Director)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Year)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var movie in Model)
-    {
+<div class="row">
+    <table>
         <tr>
-            <td>
-                @Html.DisplayFor(model => movie.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(model => movie.Director)
-            </td>
-            <td>
-                @Html.DisplayFor(model => movie.Year)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId }, new { @class = "btn" })
-                @Html.ActionLink("Details", "Details", new { id = movie.MovieId }, new { @class = "btn" })
-                @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId }, new { @class = "btn" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Director)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+            <th></th>
         </tr>
-    }
-</table>
+
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => movie.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => movie.Director)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => movie.Year)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId }, new { @class = "btn" })
+                    @Html.ActionLink("Details", "Details", new { id = movie.MovieId }, new { @class = "btn" })
+                    @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId }, new { @class = "btn" })
+                </td>
+            </tr>
+        }
+    </table>
+</div>
 
 <p>
     @Html.ActionLink("Add New Movie", "Create", new object { }, new { @class = "btn" })

@@ -4,21 +4,24 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Add a new Movie</h2>
+<div class="row">
+    <h2>Add a new Movie</h2>
+    <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.LabelFor(model => model.Title)
+        @Html.EditorFor(model => model.Title)
 
-@using (Html.BeginForm())
-{
-    @Html.LabelFor(model => model.Title)
-    @Html.EditorFor(model => model.Title)
+        @Html.LabelFor(model => model.Director)
+        @Html.EditorFor(model => model.Director)
 
-    @Html.LabelFor(model => model.Director)
-    @Html.EditorFor(model => model.Director)
+        @Html.LabelFor(model => model.Year)
+        @Html.EditorFor(model => model.Year)
+        <input type="submit" value="Create" class="btn" />
+    }
+</div>
 
-    @Html.LabelFor(model => model.Year)
-    @Html.EditorFor(model => model.Year)
-    <input type="submit" value="Create" class="btn" />
-}
-
-<p>
+<div class="row">
     @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn" })
-</p>
+</div>
+

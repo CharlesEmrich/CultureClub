@@ -5,23 +5,27 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit Traits of MovieId @Html.DisplayFor(model => model.MovieId)</h2>
-<hr />
+<div class="row">
+    <h2>Edit Traits of MovieId @Html.DisplayFor(model => model.MovieId)</h2>
+    <hr />
 
-@using (Html.BeginForm())
-{
-    @Html.HiddenFor(model => model.MovieId)
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.MovieId)
 
-    @Html.LabelFor(model => model.Title)
-    @Html.EditorFor(model => model.Title)
+        @Html.LabelFor(model => model.Title)
+        @Html.EditorFor(model => model.Title)
 
-    @Html.LabelFor(model => model.Director)
-    @Html.EditorFor(model => model.Director)
+        @Html.LabelFor(model => model.Director)
+        @Html.EditorFor(model => model.Director)
 
-    @Html.LabelFor(model => model.Year)
-    @Html.EditorFor(model => model.Year)
+        @Html.LabelFor(model => model.Year)
+        @Html.EditorFor(model => model.Year)
 
-    <input type="submit" value="Save" class="btn btn-primary" />
-}
-
-@Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Save" class="btn btn-primary" />
+    }
+</div>
+<div class="row">
+    <hr />
+    @Html.ActionLink("Back to List", "Index")
+</div>

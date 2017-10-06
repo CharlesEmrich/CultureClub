@@ -5,15 +5,18 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Remove this movie forever?</h2>
+<div class="row">
+    <h2>Remove this movie forever?</h2>
+    <hr />
+    @Html.DisplayNameFor(model => model.Title) : @Html.DisplayFor(model => model.Title)
+    @Html.DisplayNameFor(model => model.Director) : @Html.DisplayFor(model => model.Director)
+    @Html.DisplayNameFor(model => model.Year) : @Html.DisplayFor(model => model.Year)
 
-@Html.DisplayNameFor(model => model.Title) : @Html.DisplayFor(model => model.Title)
-@Html.DisplayNameFor(model => model.Director) : @Html.DisplayFor(model => model.Director)
-@Html.DisplayNameFor(model => model.Year) : @Html.DisplayFor(model => model.Year)
-
-@using (Html.BeginForm())
-{
-    <input type="submit" value="Delete" />
-}
-
-<p>@Html.ActionLink("Back to home", "Index")</p>
+    @using (Html.BeginForm())
+    {
+        <input type="submit" value="Delete" />
+    }
+</div>
+<div class="row">
+    @Html.ActionLink("Back to home", "Index")
+</div>
