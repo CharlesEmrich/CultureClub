@@ -8,8 +8,8 @@ using CultureClub.Models;
 namespace CultureClub.Migrations
 {
     [DbContext(typeof(CultureClubDbContext))]
-    [Migration("20170830191237_AddUserToRatings")]
-    partial class AddUserToRatings
+    [Migration("20171006041831_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -212,7 +212,7 @@ namespace CultureClub.Migrations
             modelBuilder.Entity("CultureClub.Models.Rating", b =>
                 {
                     b.HasOne("CultureClub.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany()
+                        .WithMany("Ratings")
                         .HasForeignKey("ApplicationUserId");
 
                     b.HasOne("CultureClub.Models.Movie", "Movie")

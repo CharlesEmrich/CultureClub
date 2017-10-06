@@ -26,15 +26,9 @@
             @Html.HiddenFor(model => model.MovieId)
       //TODO: Use Icon stars in the select
             <div class="input-field">
-                <select>
-                    <option value="" disabled selected>Choose your rating</option>
-                    <option value="1">One Star</option>
-                    <option value="2">Two Stars</option>
-                    <option value="3">Three Stars</option>
-                    <option value="4">Four Stars</option>
-                    <option value="5">Five Stars</option>
-                </select>
-                <label>Your Rating</label>
+                @Html.DropDownList("Rating",
+                            new SelectList(Enum.GetValues(typeof(ScoreNumber))),
+                            "Select Star Rating")
             </div>
             <input type="submit" value="Rate This" class="btn" />
         }

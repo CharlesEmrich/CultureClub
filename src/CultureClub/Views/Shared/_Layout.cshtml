@@ -29,6 +29,7 @@
                 <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
                 @if (User.Identity.IsAuthenticated)
                 {
+                    <li class="user-name-nav">@User.Identity.Name</li>
                     <li>@Html.ActionLink("Your Favorite Movies", "Faves", "Movies")</li>
                     <li>
                         <a href="javascript:void(0)" class="LogOff">Log Off</a>
@@ -51,6 +52,7 @@
                 <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
                 @if (User.Identity.IsAuthenticated)
                 {
+                    <li class="user-name-nav">@User.Identity.Name</li>
                     <li>
                         <a href="javascript:void(0)" class="LogOff">Log Off</a>
                         @using (Html.BeginForm("LogOff", "Account",
