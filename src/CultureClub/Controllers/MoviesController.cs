@@ -141,11 +141,14 @@ namespace CultureClub.Controllers
             var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
 
-            Rating newRating = new Rating { Movie = thisMovie, Score = (int)Rating, ApplicationUser = currentUser };
+            if (Rating > 0)
+            {
 
-            _db.Ratings.Add(newRating);
-            _db.SaveChanges();
+                Rating newRating = new Rating { Movie = thisMovie, Score = (int)Rating, ApplicationUser = currentUser };
 
+                _db.Ratings.Add(newRating);
+                _db.SaveChanges();
+            }
             return View(thisMovie);
         }
     }
