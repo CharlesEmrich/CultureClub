@@ -8,6 +8,7 @@ using CultureClub.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 using System.Security.Claims;
+using Newtonsoft.Json;
 
 namespace CultureClub.Controllers
 {
@@ -51,12 +52,6 @@ namespace CultureClub.Controllers
             //Movies the current user rated highly.
             var userFaves = _db.Ratings.Include(e => e.Movie).Where(e => e.ApplicationUser.Id == userId && e.Score > 3).ToList();
 
-            foreach (Rating rating in userFaves)
-            {
-                Debug.WriteLine("PING");
-                Debug.WriteLine(rating.Movie.Title);
-            }
-
             List<Movie> faveMovies = new List<Movie> { };
             userFaves.ForEach(e => faveMovies.Add(e.Movie));
 
@@ -68,7 +63,7 @@ namespace CultureClub.Controllers
             //Find the movie we're talking about.
             var thisMovie = _db.Movies.FirstOrDefault(movie => movie.MovieId == id);
             //Find all high ratings for that movie.
-            var highRatings = _db.Ratings.Include(e => e.ApplicationUser).Where(e => e.Movie.MovieId == thisMovie.MovieId && e.Score > 3).ToList();
+            var highRatings = _db.Ratings.Include(e => e.ApplicationUser).Include(e => e.Movie).Where(e => e.Movie.MovieId == thisMovie.MovieId && e.Score > 3).ToList();
                 Debug.WriteLine("There are " + highRatings.Count + " high ratings for " + thisMovie.Title);
             foreach (Rating rating in highRatings)
             {
@@ -78,21 +73,24 @@ namespace CultureClub.Controllers
             List<Movie> relatedMovies = new List<Movie> { };
             highRatings.ForEach(rating =>
             {
-                //if (rating.Movie.Title != thisMovie.Title && rating.ApplicationUser.Id != User.FindFirst(ClaimTypes.NameIdentifier)?.Value)
-                //{
+                if (rating.ApplicationUser.Id != User.FindFirst(ClaimTypes.NameIdentifier)?.Value)
+                {
                     foreach (Rating foreignRating in rating.ApplicationUser.Ratings)
                     {
                         Debug.WriteLine("User " + rating.ApplicationUser.UserName + " rated " + foreignRating.Movie?.Title + " a " + foreignRating.Score);
+                        Debug.WriteLine(foreignRating.Movie.Title + "!=" + thisMovie.Title);
+                        if (foreignRating.Movie.Title != thisMovie.Title && foreignRating.Score > 3)
+                        {
+                            relatedMovies.Add(foreignRating.Movie);
+                        }
                     }
-                    rating.ApplicationUser
-                    .Ratings.Where(userRating => userRating.Score > 3).ToList()
-                    .ForEach(userRating => relatedMovies.Add(rating.Movie));
-                //}
-            });
-            foreach (Movie movie in relatedMovies)
-                {
-                    Debug.WriteLine(movie?.Title);
+
+                    //TODO: It seems like it might be possible to refactor the above into something more similar to the below:
+                    //rating.ApplicationUser
+                    //.Ratings.Where(userRating => userRating.Score > 3).ToList()
+                    //.ForEach(userRating => relatedMovies.Add(rating.Movie));
                 }
+            });
             return View(relatedMovies);
         }
 
