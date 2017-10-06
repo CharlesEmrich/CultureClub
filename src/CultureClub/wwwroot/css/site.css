@@ -11,3 +11,16 @@ h1, h2, h3, h4 {
     background-color: #220C10;
 }
 
+.cult-gang {
+    opacity: .5;
+    width: 170%;
+}
+
+.main-title {
+    color: ghostwhite;
+    font-weight: 800;
+}
+
+.sub-title {
+    color: ghostwhite;
+}
