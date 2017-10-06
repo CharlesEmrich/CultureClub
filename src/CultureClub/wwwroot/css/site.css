@@ -1,4 +1,13 @@
 ﻿body {
-    color: red;
-    background-color: white;
+    color: #220C10;
+    background-color: #CDD3D5;
 }
+
+h1, h2, h3, h4 {
+    color: #506C64;
+}
+
+.btn {
+    background-color: #220C10;
+}
+

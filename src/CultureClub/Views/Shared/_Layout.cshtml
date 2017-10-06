@@ -24,9 +24,9 @@
 <body>
     <nav class="black" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">Logo</a>
+            <a id="logo-container" href="/" class="brand-logo"><i class="material-icons large">movie_creation</i></a>
             <ul class="right hide-on-med-and-down">
-                <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
+                <li><i class="material-icons medium">@Html.ActionLink("local_movies", "Index", "Movies")</i></li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li class="user-name-nav">@User.Identity.Name</li>
@@ -78,6 +78,7 @@
         @RenderBody()
     </div>
     
+    @* Click Handlers for Nav Buttons *@
     <script type="text/javascript">
        $(document).ready(function(){
            $('.LogOff').click(function () {
