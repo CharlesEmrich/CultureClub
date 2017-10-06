@@ -82,7 +82,7 @@ namespace CultureClub.Controllers
         {
 
             await _signInManager.SignOutAsync();
-            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var currentUser = await _userManager.FindByIdAsync(userId);
             IdentityResult result = await _userManager.DeleteAsync(currentUser);
             return RedirectToAction("Index", "Home");

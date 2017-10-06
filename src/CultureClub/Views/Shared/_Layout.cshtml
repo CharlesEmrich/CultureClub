@@ -26,9 +26,10 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">Logo</a>
             <ul class="right hide-on-med-and-down">
-                <li>@Html.ActionLink("Manage Movies", "Index", "Movies")</li>
+                <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
                 @if (User.Identity.IsAuthenticated)
                 {
+                    <li>@Html.ActionLink("Your Favorite Movies", "Faves", "Movies")</li>
                     <li>
                         <a href="javascript:void(0)" class="LogOff">Log Off</a>
                         @using (Html.BeginForm("LogOff", "Account",
@@ -47,7 +48,7 @@
                 }            
             </ul>
             <ul id="nav-mobile" class="side-nav">
-                <li>@Html.ActionLink("Manage Movies", "Index", "Movies")</li>
+                <li>@Html.ActionLink("Movies", "Index", "Movies")</li>
                 @if (User.Identity.IsAuthenticated)
                 {
                     <li>

@@ -1,4 +1,6 @@
-﻿@model IEnumerable<CultureClub.Models.Movie>
+﻿@using System.Security.Claims
+
+@model IEnumerable<CultureClub.Models.Movie>
 @{
     ViewData["Title"] = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -15,6 +17,9 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
+                Your Rating
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Director)
             </th>
             <th>
@@ -29,13 +34,16 @@
                     @Html.DisplayFor(model => movie.Title)
                 </td>
                 <td>
+                    @movie.CurrentUserRating(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, movie.MovieId)
+                </td>
+                <td>
                     @Html.DisplayFor(model => movie.Director)
                 </td>
                 <td>
                     @Html.DisplayFor(model => movie.Year)
                 </td>
                 <td>
-                    @Html.ActionLink("Related Movies", "FaveRelated", new { id = movie.MovieId })
+                    @Html.ActionLink("Related Movies", "FaveRelated", new { id = movie.MovieId }, new { @class = "btn" })
                 </td>
             </tr>
         }
