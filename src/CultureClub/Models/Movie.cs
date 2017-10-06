@@ -49,5 +49,4 @@ namespace CultureClub.Models
             return MyRating.Score;
         }
     }
-
 }

@@ -34,7 +34,14 @@
                     @Html.DisplayFor(model => movie.Title)
                 </td>
                 <td>
-                    @movie.CurrentUserRating(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, movie.MovieId)
+                    @for (int i = 0; i < movie.CurrentUserRating(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, movie.MovieId); i++)
+                    {
+                       <i class="material-icons">star</i>
+                    }
+                    @for (int i = 0; i < 5 - movie.CurrentUserRating(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, movie.MovieId); i++)
+                    {
+                        <i class="material-icons">star_border</i>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(model => movie.Director)
