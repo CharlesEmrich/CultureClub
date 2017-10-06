@@ -8,9 +8,7 @@
 
 <h2>Movies</h2>
 <hr />
-<p>
-    @Html.ActionLink("Add New Movie", "Create")
-</p>
+
 <table>
     <tr>
         <th>
@@ -29,19 +27,23 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(model => movie.Title) --
+                @Html.DisplayFor(model => movie.Title)
             </td>
             <td>
-                @Html.DisplayFor(model => movie.Director) --
+                @Html.DisplayFor(model => movie.Director)
             </td>
             <td>
-                @Html.DisplayFor(model => movie.Year) --
+                @Html.DisplayFor(model => movie.Year)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId })
-                @Html.ActionLink("Details", "Details", new { id = movie.MovieId })
-                @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId })
+                @Html.ActionLink("Edit", "Edit", new { id = movie.MovieId }, new { @class = "btn" })
+                @Html.ActionLink("Details", "Details", new { id = movie.MovieId }, new { @class = "btn" })
+                @Html.ActionLink("Delete", "Delete", new { id = movie.MovieId }, new { @class = "btn" })
             </td>
         </tr>
     }
 </table>
+
+<p>
+    @Html.ActionLink("Add New Movie", "Create", new object { }, new { @class = "btn" })
+</p>

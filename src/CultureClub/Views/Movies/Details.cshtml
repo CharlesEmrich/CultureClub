@@ -8,26 +8,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Movie Details</h2>
-<hr />
-<p>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</p>
-<p>@Html.DisplayNameFor(model => model.Director): @Html.DisplayFor(model => model.Director)</p>
-<p>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</p>
-<p>@Model.AverageRating(Model.MovieId)</p>
-<hr />
-
+<div class="row">
+    <h2>Movie Details</h2>
+    <hr />
+    <p>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)</p>
+    <p>@Html.DisplayNameFor(model => model.Director): @Html.DisplayFor(model => model.Director)</p>
+    <p>@Html.DisplayNameFor(model => model.Year): @Html.DisplayFor(model => model.Year)</p>
+    <p>Average Rating: @Model.AverageRating(Model.MovieId)</p>
+    <hr />
+</div>
 @if (User.Identity.IsAuthenticated)
 {
     //TODO: Disable this if they've rated the movie
-    <h2>Add a Rating</h2>
-    @using (Html.BeginForm())
-    {
-        @Html.HiddenFor(model => model.MovieId)
-        @Html.DropDownList("Rating",
-                            new SelectList(Enum.GetValues(typeof(ScoreNumber))),
-                            "Select Star Rating")
+    <div class="row">
+        @using (Html.BeginForm())
+        {
+            @Html.HiddenFor(model => model.MovieId)
+      //TODO: Use Icon stars in the select
+            <div class="input-field">
+                <select>
+                    <option value="" disabled selected>Choose your rating</option>
+                    <option value="1">One Star</option>
+                    <option value="2">Two Stars</option>
+                    <option value="3">Three Stars</option>
+                    <option value="4">Four Stars</option>
+                    <option value="5">Five Stars</option>
+                </select>
+                <label>Your Rating</label>
+            </div>
+            <input type="submit" value="Rate This" class="btn" />
+        }
 
-        <input type="submit" value="Rate This" class="btn btn-default" />
-    }
+    </div>
 }
-<p>@Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) | @Html.ActionLink("Back to List", "Index")</p>
+
+<div class="row">
+    <p>@Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }, new { @class = "btn" }) | @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn" })</p>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('select').material_select();
+    });
+</script>

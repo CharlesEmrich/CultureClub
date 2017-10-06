@@ -16,6 +16,9 @@
 
     @Html.LabelFor(model => model.Year)
     @Html.EditorFor(model => model.Year)
-    <input type="submit" value="Create" class="btn btn-default" />
+    <input type="submit" value="Create" class="btn" />
 }
-@Html.ActionLink("Back to List", "Index")
+
+<p>
+    @Html.ActionLink("Back to List", "Index", new object { }, new { @class = "btn" })
+</p>
